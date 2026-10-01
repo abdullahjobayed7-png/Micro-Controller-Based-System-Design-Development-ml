@@ -1,0 +1,104 @@
+.                                  without switch
+---------------------------------------------------------------------------
+int redLED = 8;
+int yellowLED = 9;
+int greenLED = 10;
+
+void setup() {
+  pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+}
+
+void loop() {
+  // Red
+  digitalWrite(redLED, HIGH);
+  delay(5000);
+  digitalWrite(redLED, LOW);
+
+  // Green
+  digitalWrite(greenLED, HIGH);
+  delay(5000);
+  digitalWrite(greenLED, LOW);
+
+  // Yellow
+  digitalWrite(yellowLED, HIGH);
+  delay(2000);
+  digitalWrite(yellowLED, LOW);
+}
+
+
+
+.                                               with switch
+-------------------------------------------------------------------------------------
+int redLED = 8;
+int yellowLED = 9;
+int greenLED = 10;
+int sw = 7;
+
+void setup() {
+  pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+
+  pinMode(sw, INPUT_PULLUP);
+}
+
+void loop() {
+
+  // Switch OFF হলে সব LED বন্ধ
+  if (digitalRead(sw) == HIGH) {
+    digitalWrite(redLED, LOW);
+    digitalWrite(yellowLED, LOW);
+    digitalWrite(greenLED, LOW);
+    return;
+  }
+
+  // Switch ON হলে traffic light চলবে
+
+  // Red
+  digitalWrite(redLED, HIGH);
+  delay(5000);
+  digitalWrite(redLED, LOW);
+
+  // Green
+  digitalWrite(greenLED, HIGH);
+  delay(5000);
+  digitalWrite(greenLED, LOW);
+
+  // Yellow
+  digitalWrite(yellowLED, HIGH);
+  delay(2000);
+  digitalWrite(yellowLED, LOW);
+}
+
+.                     Switch চাপলে/ON করলে 🔴🟡🟢 তিনটা light একসাথে জ্বলবে
+--------------------------------------------------------------------------------------
+int red = 8;
+int yellow = 9;
+int green = 10;
+int sw = 7;
+
+void setup() {
+  pinMode(red, OUTPUT);
+  pinMode(yellow, OUTPUT);
+  pinMode(green, OUTPUT);
+
+  pinMode(sw, INPUT_PULLUP);
+}
+
+void loop() {
+
+  if (digitalRead(sw) == LOW) {
+    // Switch ON
+    digitalWrite(red, HIGH);
+    digitalWrite(yellow, HIGH);
+    digitalWrite(green, HIGH);
+  }
+  else {
+    // Switch OFF
+    digitalWrite(red, LOW);
+    digitalWrite(yellow, LOW);
+    digitalWrite(green, LOW);
+  }
+}
